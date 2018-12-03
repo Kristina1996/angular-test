@@ -89,7 +89,8 @@
  
             <!-- *ngFor для прокрутки списка -->
             <tr *ngFor="let user of users">
-			
+			<!--<ng-container *ngFor="let column of columns"></ng-container>-->
+			<!--user[column.name]-->
                 <td>{{user.name}}</td>
                 <td>{{user.surname}}</td>
                 <td>{{user.age}}</td>

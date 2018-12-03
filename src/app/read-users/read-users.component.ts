@@ -21,6 +21,8 @@ export class ReadUsersComponent implements OnInit {
 	title = 'Список пользователей';
     users: User[];
 	
+	columns: Column[] = [{name: "name", title: "Имя"}];
+	
 	page: number = 1;
 	
 	modalRef: BsModalRef;
