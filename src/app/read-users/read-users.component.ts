@@ -1,8 +1,14 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, TemplateRef } from '@angular/core';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { UserService } from '../user.service';
 import { Observable} from 'rxjs';
 import { User } from '../user';
+import { Column } from '../column';
 import { Http, Response, Headers } from '@angular/http';
+import { ModalWindowComponent } from '../modal-window.component';
+import { SettingsTableComponent } from '../settings-table/settings-table.component';
+//import { MatDialog } from '@angular/material';
 
 @Component({
 	selector: 'app-read-users',
@@ -14,10 +20,24 @@ export class ReadUsersComponent implements OnInit {
 	
 	title = 'Список пользователей';
     users: User[];
+	
 	page: number = 1;
+	
+	modalRef: BsModalRef;
  
     // Инициализация userService для получения списка пользователей
-    constructor( private userService: UserService ){}
+    constructor( private userService: UserService,
+				 private modalService: BsModalService
+				 //public dialog: MatDialog
+				 ){}
+				 
+	openModal(template: TemplateRef<any>) {
+		this.modalRef = this.modalService.show(template);
+	}
+	
+	/*openMatModal() {
+		this.dialog.open(SettingsTableComponent);
+	}*/
  
     ngOnInit(){
         //this.getAllUsers();
