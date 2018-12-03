@@ -1,0 +1,91 @@
+<p>
+  read-users works!
+</p>
+
+<!-- Заголовок страницы -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class='page-header'><h1>{{title}}</h1></div>
+        </div>
+    </div>
+
+<div class="row m-b-18px">
+    <div class="col-md-12">
+        <a routerLink="/settings" class='btn btn-primary pull-right'>
+            <span class='glyphicon glyphicon-plus'></span> Настройки
+        </a>
+    </div>
+</div>
+ 
+<!--<div class="row">
+    <div class="col-md-12">
+ 
+        <table class='table table-hover table-responsive table-bordered'>
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Age</th>
+                <th>Address</th>
+                <th>Position</th>
+				<th>Salary</th>
+				<th>inn</th>
+				<th>Actions</th>
+            </tr>
+ 
+           
+            <tr *ngFor="let user of users">
+			
+                <td>{{user.name}}</td>
+                <td>{{user.surname}}</td>
+                <td>{{user.age}}</td>
+                <td>{{user.address}}</td>
+				<td>{{user.position}}</td>
+				<td>{{user.salary}}</td>
+				<td>{{user.inn}}</td>
+				
+                <td>
+					<a routerLink="/edit/{{user.id}}" class='btn btn-info m-r-5px'>
+                        <span class='glyphicon glyphicon-edit'></span> Редактировать
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>-->
+
+<div class="container">  
+    <div class="row" infiniteScroll [infiniteScrollDistance]="0.5" [infiniteScrollThrottle]="50" (scrolled)="onScroll()" [scrollWindow]="false"  
+    style="height: 400px; overflow-y: scroll;">  
+     
+		<table class='table table-hover table-responsive table-bordered'>
+            <tr>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Возраст</th>
+                <th>Адрес</th>
+                <th>Должность</th>
+				<th>Зарплата</th>
+				<th>ИНН</th>
+				<th>Действия</th>
+            </tr>
+ 
+            <!-- *ngFor для прокрутки списка -->
+            <tr *ngFor="let user of users">
+			
+                <td>{{user.name}}</td>
+                <td>{{user.surname}}</td>
+                <td>{{user.age}}</td>
+                <td>{{user.address}}</td>
+				<td>{{user.position}}</td>
+				<td>{{user.salary}}</td>
+				<td>{{user.inn}}</td>
+				
+                <td>
+					<a routerLink="/edit/{{user.id}}" class='btn btn-info m-r-5px'>
+                        <span class='glyphicon glyphicon-edit'></span> Редактировать
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>  
+  </div> 

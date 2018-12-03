@@ -1,0 +1,78 @@
+<p>
+  Редактирование карточки пользователя 
+</p>
+
+<div class="row">
+        <div class="col-md-12">
+            <div class='page-header'><h1>{{title}}</h1></div>
+        </div>
+</div>
+
+
+<div *ngIf="user">
+	
+	<form [formGroup]="update_user_form" (ngSubmit)="updateUser()">
+	
+		<label> Имя *</label>
+		<input formControlName="name"
+                type='text' name='name'
+                class='form-control' required />
+		<div
+                *ngIf="update_user_form.get('name').touched && update_user_form.get('name').hasError('required')"
+                class="alert alert-danger">
+                Name is required.
+        </div>
+		
+		<label> Фамилия *</label>
+		<input formControlName="surname"
+                type='text' name='surname'
+                class='form-control' required />
+		<div
+                *ngIf="update_user_form.get('surname').touched && update_user_form.get('surname').hasError('required')"
+                class="alert alert-danger">
+                surname is required.
+        </div>
+		
+		<label> Возраст *</label>
+		<input formControlName="age"
+                type='text' name='age'
+                class='form-control' required />
+		<div
+                *ngIf="update_user_form.get('age').touched && update_user_form.get('age').hasError('required')"
+                class="alert alert-danger">
+                age is required.
+        </div>
+		
+		<label> Должность *</label>
+		<input formControlName="position"
+                type='text' name='position'
+                class='form-control' required />
+		<div
+                *ngIf="update_user_form.get('position').touched && update_user_form.get('position').hasError('required')"
+                class="alert alert-danger">
+                position is required.
+        </div>
+		
+		<label>Наличие ИНН:
+			<input type="checkbox" (change)="newFunction()" 
+					formControlName="check"/>
+		</label>
+		
+		<div *ngIf="newFunction()">
+		
+		<label> ИНН </label>
+		<input formControlName="inn"
+                type='text' name='inn'
+                class='form-control' required />
+		<div
+                *ngIf="update_user_form.get('inn').touched && update_user_form.get('inn').hasError('required')"
+                class="alert alert-danger">
+                inn is required.
+        </div>
+		</div>
+	</form>
+
+	<button (click)="goBack()">Назад</button>
+	<button (click)="resetForm()">Сбросить</button>
+	<button (click)="save()" [disabled]="!buttonDisabled">Сохранить</button>
+</div>
