@@ -43,7 +43,7 @@ export class ReadUsersComponent implements OnInit {
 		this.dialog.open(SettingsTableComponent);
 	}*/
  
-    ngOnInit(){
+    ngOnInit() {
         //this.getAllUsers();
 		this.getUserswithPage();
     }

@@ -89,8 +89,6 @@
  
             <!-- *ngFor для прокрутки списка -->
             <tr *ngFor="let user of users">
-			<!--<ng-container *ngFor="let column of columns"></ng-container>-->
-			<!--user[column.name]-->
                 <td>{{user.name}}</td>
                 <td>{{user.surname}}</td>
                 <td>{{user.age}}</td>
@@ -117,7 +115,18 @@
  
         <tr *ngFor="let user of users">
 			<ng-container *ngFor="let column of columns">
-				<td>{{user[column.name]}}</td>
-			</ng-container>
+                <ng-container *ngIf="column.type == 'button'; else string">
+				<td>
+                    <a routerLink="/edit/{{user.id}}" class='btn btn-info m-r-5px'>
+                        <span class='glyphicon glyphicon-edit'></span> Редактировать
+                    </a>
+                </td>
+                </ng-container>
+
+                <ng-template #string>
+                    <td>{{user[column.name]}}</td>
+                </ng-template>
+
+            </ng-container>
         </tr>
     </table>
