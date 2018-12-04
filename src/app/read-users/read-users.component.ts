@@ -9,7 +9,6 @@ import { Http, Response, Headers } from '@angular/http';
 import { ModalWindowComponent } from '../modal-window.component';
 import { SettingsTableComponent } from '../settings-table/settings-table.component';
 import { COLUMNS } from '../mock-columns';
-//import { MatDialog } from '@angular/material';
 
 @Component({
 	selector: 'app-read-users',
@@ -18,9 +17,10 @@ import { COLUMNS } from '../mock-columns';
 	providers: [UserService]
 })
 export class ReadUsersComponent implements OnInit {
-	
+
+    show: boolean = false;
 	title = 'Список пользователей';
-    users: User[];
+    users: User[] = [];
 	
 	//columns: Column[];
 	columns = COLUMNS;
@@ -60,8 +60,11 @@ export class ReadUsersComponent implements OnInit {
 		this.userService.getUserswithPage(this.page)
 			.subscribe(users => {
 				console.log(users); 
-				this.users = users['records']}
-            );
+				this.users = users['records']
+                //this.users = this.users.concat(users['records']);
+				//this.users.push(users['records']);
+				console.log(users);
+			});
 	}
 	
 	onScroll() {

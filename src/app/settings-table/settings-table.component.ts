@@ -1,7 +1,5 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
-//import { MatDialogRef } from '@angular/material';
+import { COLUMNS } from '../mock-columns';
 
 @Component({
 	selector: 'app-settings-table',
@@ -10,19 +8,10 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 })
 export class SettingsTableComponent implements OnInit {
 	
-	//"./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
-	
 	heroes = ['Windstorm', 'Bombasto', 'Magneta', 'Tornado'];
-
-	modalRef: BsModalRef;
+    columns = COLUMNS;
 	
-	constructor(private modalService: BsModalService,
-				//private matDialogRef: MatDialogRef<SettingsTableComponent>
-				) {}
- 
-	openModal(template: TemplateRef<any>) {
-		this.modalRef = this.modalService.show(template);
-	}
+	constructor (  ) {}
 
 	ngOnInit() {
 		

@@ -9,29 +9,23 @@
         </div>
     </div>
 
-<div class="row m-b-18px">
+<!-- <div class="row m-b-18px">
     <div class="col-md-12">
         <a routerLink="/settings" class='btn btn-primary pull-right'>
             <span class='glyphicon glyphicon-plus'></span> Настройки
         </a>
     </div>
-</div>
+</div> -->
 
-<div (click)="openModal(template)" class="btn btn-success">Modal Component</div>
 
-<ng-template #template>
-  <div class="modal-header">
-    <h4 class="modal-title pull-left">Modal</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-      <span aria-hidden="true">×</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    This is a modal.
-  </div>
-</ng-template>
+    <button class='btn btn-primary pull-right' (click)="show = !show">Настройки</button>
 
-<app-settings-table></app-settings-table>
+    <ng-container *ngIf="show">
+
+        <app-settings-table></app-settings-table>
+
+    </ng-container>
+
 
 <!--<modal-window></modal-window>-->
  
@@ -126,7 +120,6 @@
                 <ng-template #string>
                     <td>{{user[column.name]}}</td>
                 </ng-template>
-
             </ng-container>
         </tr>
     </table>
