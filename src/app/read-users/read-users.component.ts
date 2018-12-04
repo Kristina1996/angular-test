@@ -8,6 +8,7 @@ import { Column } from '../column';
 import { Http, Response, Headers } from '@angular/http';
 import { ModalWindowComponent } from '../modal-window.component';
 import { SettingsTableComponent } from '../settings-table/settings-table.component';
+import { COLUMNS } from '../mock-columns';
 //import { MatDialog } from '@angular/material';
 
 @Component({
@@ -21,7 +22,8 @@ export class ReadUsersComponent implements OnInit {
 	title = 'Список пользователей';
     users: User[];
 	
-	columns: Column[] = [{name: "name", title: "Имя"}];
+	//columns: Column[];
+	columns = COLUMNS;
 	
 	page: number = 1;
 	

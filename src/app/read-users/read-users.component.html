@@ -106,5 +106,18 @@
                 </td>
             </tr>
         </table>
+		
     </div>  
   </div> 
+  
+	<table class='table table-hover table-responsive table-bordered'>
+        <th *ngFor="let column of columns">
+            {{column.title}}
+        </th>
+ 
+        <tr *ngFor="let user of users">
+			<ng-container *ngFor="let column of columns">
+				<td>{{user[column.name]}}</td>
+			</ng-container>
+        </tr>
+    </table>
