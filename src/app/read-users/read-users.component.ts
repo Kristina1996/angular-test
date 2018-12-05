@@ -8,7 +8,7 @@ import { Column } from '../column';
 import { Http, Response, Headers } from '@angular/http';
 import { ModalWindowComponent } from '../modal-window.component';
 import { SettingsTableComponent } from '../settings-table/settings-table.component';
-import { COLUMNS } from '../mock-columns';
+import { COLUMNS } from '../columns-data';
 
 @Component({
 	selector: 'app-read-users',
