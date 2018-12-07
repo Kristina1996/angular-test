@@ -19,11 +19,12 @@
             <li *ngFor="let column of columns">
                 {{ column.title }}
 
-                <button (click)="upColumn(column.title)">Вверх</button>
-                <button (click)="downColumn(column.title)">Вниз</button>
+                <button (click)="upColumn(column)">Вверх</button>
+                <button (click)="downColumn(column)">Вниз</button>
             </li>
         </ul>
 
-        <a href=" " (click)="saveSettings()">Закрыть</a>
+        <!--<a href=" " (click)="saveSettings()">Закрыть</a>-->
+		<a (click)="saveSettings()">Закрыть</a>
     </div>
 </div>

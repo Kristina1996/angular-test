@@ -22,7 +22,7 @@
 
     <ng-container *ngIf="show">
 
-        <app-settings-table></app-settings-table>
+        <app-settings-table [show]="show" (onChanged)="onChanged($event)"></app-settings-table>
 
     </ng-container>
 

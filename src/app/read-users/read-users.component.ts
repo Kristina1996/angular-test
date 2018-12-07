@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, TemplateRef } from '@angular/core';
-import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+// import { BsModalService } from 'ngx-bootstrap/modal';
+// import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { UserService } from '../user.service';
 import { Observable} from 'rxjs';
 import { User } from '../user';
@@ -27,25 +27,31 @@ export class ReadUsersComponent implements OnInit {
 	
 	page: number = 1;
 	
-	modalRef: BsModalRef;
+	//modalRef: BsModalRef;
  
     // Инициализация userService для получения списка пользователей
     constructor( private userService: UserService,
-				 private modalService: BsModalService
+				 //private modalService: BsModalService
 				 //public dialog: MatDialog
 				 ){}
-				 
-	openModal(template: TemplateRef<any>) {
-		this.modalRef = this.modalService.show(template);
-	}
-	
-	/*openMatModal() {
-		this.dialog.open(SettingsTableComponent);
-	}*/
  
     ngOnInit() {
         //this.getAllUsers();
+		let localStorageColumns = JSON.parse(localStorage.getItem('columns'));
+		if (localStorageColumns == null) {
+			console.log("localStorage пустой");
+		} else { 
+			console.log("localStorage не пустой"); 
+			//this.columns = localStorageColumns.columns;
+		}
 		this.getUserswithPage();
+    }
+	
+	onChanged(increased: any) {
+		console.log(increased);
+		if (increased == false) {
+			this.show = false;
+		}
     }
 	
 	getAllUsers() {

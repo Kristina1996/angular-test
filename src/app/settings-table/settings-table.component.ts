@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, Input, Output, EventEmitter } from '@angular/core';
 import { COLUMNS } from '../columns-data';
 import { Column } from '../column';
 
@@ -16,30 +16,50 @@ export class SettingsTableComponent implements OnInit {
 	column: Column;
     index: number;
     i: number;
+	@Input() show: boolean;
+	@Output() onChanged = new EventEmitter<boolean>();
 	
 	constructor (  ) {}
 
 	ngOnInit() {
-        this.setLocalStorageColumns(this.columns);
-        // this.index = this.columns.findIndex(this.column => this.column.title == 'Имя');
+        //this.setLocalStorageColumns(this.columns);
+        //this.index = this.columns.findIndex(this.column => this.column.title == 'Имя';);
+		
+		console.log(this.index);
 	}
 
     saveSettings() {
-		console.log('working');
-		this.setLocalStorageColumns(this.hero);
-		console.log(this.columns);
+		console.log("заходит в сэйв");
+		this.show = false;
+		this.onChanged.emit(false);
+		this.setLocalStorageColumns();
 	}
 
-    setLocalStorageColumns(columns) {
+    setLocalStorageColumns() {
 		localStorage.setItem('columns', JSON.stringify({columns: this.columns}));
 	}
-
-    upColumn(title) {
-		console.log(title);
+	
+	changeRange(index, nextIndex) {
+		var tmp = this.columns[index];
+		this.columns[index] = this.columns[nextIndex];
+		this.columns[nextIndex] = tmp;
 	}
 
-	downColumn(title) {
+    upColumn(column) {
+		console.log(column);
+		var index = this.columns.indexOf(column);
+		var downIndex = index - 1;
+		this.changeRange(index, downIndex);
+		/* var tmp = this.columns[index];
+		this.columns[index] = this.columns[downIndex];
+		this.columns[downIndex] = tmp;
+		console.log("index is : " + index ); */
+	}
 
+	downColumn(column) {
+		var index = this.columns.indexOf(column);
+		var upIndex = index + 1;
+		this.changeRange(index, upIndex);
 	}
 
 }
