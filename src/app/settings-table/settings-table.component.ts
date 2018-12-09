@@ -29,10 +29,10 @@ export class SettingsTableComponent implements OnInit {
 	}
 
     saveSettings() {
+        this.setLocalStorageColumns();
 		console.log("заходит в сэйв");
 		this.show = false;
 		this.onChanged.emit(false);
-		this.setLocalStorageColumns();
 	}
 	
 	closeModal() {
