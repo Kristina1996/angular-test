@@ -12,19 +12,23 @@
 
 <div id="error" class="modalbackground">
     <div class="modalwindow">
-        <h3>Ошибка!</h3>
-        <p>Проверьте введенные данные</p>
+		<a (click)="closeModal()" title="Закрыть" class="close">X</a>
+        <h3>Настройки</h3>
+        <p>Выберите порядок расположения колонок</p>
 
         <ul>
             <li *ngFor="let column of columns">
                 {{ column.title }}
 
-                <button (click)="upColumn(column)">Вверх</button>
-                <button (click)="downColumn(column)">Вниз</button>
+                <!--<button (click)="upColumn(column)">Вверх</button>
+                <button (click)="downColumn(column)">Вниз</button>-->
+				
+				<a class="up" (click)="upColumn(column)"></a>
+                <a class="down" (click)="downColumn(column)"></a>
             </li>
         </ul>
 
         <!--<a href=" " (click)="saveSettings()">Закрыть</a>-->
-		<a (click)="saveSettings()">Закрыть</a>
+		<a (click)="saveSettings()">Сохранить</a>
     </div>
 </div>

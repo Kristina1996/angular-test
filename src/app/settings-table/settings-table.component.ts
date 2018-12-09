@@ -34,6 +34,10 @@ export class SettingsTableComponent implements OnInit {
 		this.onChanged.emit(false);
 		this.setLocalStorageColumns();
 	}
+	
+	closeModal() {
+		this.onChanged.emit(false);
+	}
 
     setLocalStorageColumns() {
 		localStorage.setItem('columns', JSON.stringify({columns: this.columns}));
@@ -46,14 +50,9 @@ export class SettingsTableComponent implements OnInit {
 	}
 
     upColumn(column) {
-		console.log(column);
 		var index = this.columns.indexOf(column);
 		var downIndex = index - 1;
 		this.changeRange(index, downIndex);
-		/* var tmp = this.columns[index];
-		this.columns[index] = this.columns[downIndex];
-		this.columns[downIndex] = tmp;
-		console.log("index is : " + index ); */
 	}
 
 	downColumn(column) {

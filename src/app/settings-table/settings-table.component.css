@@ -41,7 +41,7 @@
 }
 
 /* вид кнопки ЗАКРЫТЬ */
-.modalwindow a {
+.close {
     display: block;
     color: #fff;
     background: #369;
@@ -56,4 +56,48 @@
 /* вид кнопки ЗАКРЫТЬ при наведении на нее мыши */
 .modalwindow a:hover {
     background: #47a;
+}
+
+.close {
+   
+}
+
+.close:hover { background: #00d9ff; }
+
+li {
+	width: 200px;
+	height: 30px;
+	background-color: #e1e1e1;
+	padding: 7px 20px;
+	margin-bottom: 10px;
+	border-radius: 10px;
+	border-left: 10px solid #C7C7C7; 
+	list-style-type: none;
+	margin-left: auto;
+    margin-right: auto;
+	text-align: left;
+	
+	vertical-align: center;
+}
+
+ul > li:hover {
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+.down {
+	display: inline-block;
+	background-image: url('arrow-down-32.png');
+	min-height: 32px;
+	min-width: 32px;
+	cursor: pointer;
+	float: right;
+}
+
+.up {
+	display: inline-block !important;
+	background-image: url('arrow-up-32.png') !important;
+	min-height: 32px;
+	min-width: 32px;
+	cursor: pointer;
+	float: right;
 }

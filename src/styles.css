@@ -4,3 +4,18 @@
 .m-r-5px{ margin-right: 5px; }
 .w-40-pct{ width: 40%; }
 .text-align-center{ text-align: center; }
+
+.flex-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.header {
+	background: #C7C7C7;
+	height: 90px;
+}
+
+.footer {
+	background: #C7C7C7;
+	height: 90px;
+}

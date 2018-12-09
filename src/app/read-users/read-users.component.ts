@@ -1,6 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter, TemplateRef } from '@angular/core';
-// import { BsModalService } from 'ngx-bootstrap/modal';
-// import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { UserService } from '../user.service';
 import { Observable} from 'rxjs';
 import { User } from '../user';
@@ -26,33 +24,33 @@ export class ReadUsersComponent implements OnInit {
 	columns = COLUMNS;
 	
 	page: number = 1;
-	
-	//modalRef: BsModalRef;
  
     // Инициализация userService для получения списка пользователей
-    constructor( private userService: UserService,
-				 //private modalService: BsModalService
-				 //public dialog: MatDialog
-				 ){}
+    constructor( private userService: UserService ){}
  
     ngOnInit() {
         //this.getAllUsers();
-		let localStorageColumns = JSON.parse(localStorage.getItem('columns'));
-		if (localStorageColumns == null) {
-			console.log("localStorage пустой");
-		} else { 
-			console.log("localStorage не пустой"); 
-			//this.columns = localStorageColumns.columns;
-		}
+		this.getDataFromLocalStorage();
 		this.getUserswithPage();
     }
 	
 	onChanged(increased: any) {
 		console.log(increased);
 		if (increased == false) {
+			this.getDataFromLocalStorage();
 			this.show = false;
 		}
     }
+	
+	getDataFromLocalStorage() {
+		let localStorageColumns = JSON.parse(localStorage.getItem('columns'));
+		if (localStorageColumns == null) {
+			console.log("localStorage пустой");
+		} else { 
+			console.log("localStorage не пустой"); 
+			this.columns = localStorageColumns.columns;
+		}
+	}
 	
 	getAllUsers() {
 		this.userService.readUsers()
@@ -66,10 +64,18 @@ export class ReadUsersComponent implements OnInit {
 		this.userService.getUserswithPage(this.page)
 			.subscribe(users => {
 				console.log(users); 
-				this.users = users['records']
-                //this.users = this.users.concat(users['records']);
-				//this.users.push(users['records']);
-				console.log(users);
+				//this.users = users['records']
+				if (this.page == 1) {
+					this.users = users['records'];
+				}
+				
+				if (this.page > 1) {
+					for (var i=0; i < users['records'].length; i++) {
+						var size = this.users.push(users['records'][i]);
+						console.log(size);
+					}
+					console.log(users); 
+				}
 			});
 	}
 	
