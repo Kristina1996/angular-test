@@ -5,7 +5,9 @@
         </div>
     </div>
 
-    <button class='btn btn-primary pull-right' (click)="show = !show">Настройки</button>
+    <div class="row">
+        <button class='btn btn-primary pull-right' id="btn-openSettings" (click)="show = !show">Настройки</button>
+    </div>
 
     <ng-container *ngIf="show">
 
@@ -13,45 +15,7 @@
 
     </ng-container>
 
-
-<!--<modal-window></modal-window>-->
- 
-<!--<div class="row">
-    <div class="col-md-12">
- 
-        <table class='table table-hover table-responsive table-bordered'>
-            <tr>
-                <th>Name</th>
-                <th>Surname</th>
-                <th>Age</th>
-                <th>Address</th>
-                <th>Position</th>
-				<th>Salary</th>
-				<th>inn</th>
-				<th>Actions</th>
-            </tr>
- 
-           
-            <tr *ngFor="let user of users">
-			
-                <td>{{user.name}}</td>
-                <td>{{user.surname}}</td>
-                <td>{{user.age}}</td>
-                <td>{{user.address}}</td>
-				<td>{{user.position}}</td>
-				<td>{{user.salary}}</td>
-				<td>{{user.inn}}</td>
-				
-                <td>
-					<a routerLink="/edit/{{user.id}}" class='btn btn-info m-r-5px'>
-                        <span class='glyphicon glyphicon-edit'></span> Редактировать
-                    </a>
-                </td>
-            </tr>
-        </table>
-    </div>
-</div>-->
-
+<!--
 <div class="container">  
     <div class="row" infiniteScroll [infiniteScrollDistance]="0.5" [infiniteScrollThrottle]="50" (scrolled)="onScroll()" [scrollWindow]="false"  
     style="height: 400px; overflow-y: scroll;">  
@@ -67,8 +31,7 @@
 				<th>ИНН</th>
 				<th>Действия</th>
             </tr>
- 
-            <!-- *ngFor для прокрутки списка -->
+
             <tr *ngFor="let user of users">
                 <td>{{user.name}}</td>
                 <td>{{user.surname}}</td>
@@ -87,28 +50,35 @@
         </table>
 		
     </div>  
-  </div> 
-  
-	<table class='table table-hover table-responsive table-bordered'>
-        <tr>
-            <th class="text-center" *ngFor="let column of columns">
-                {{column.title}}
-            </th>
-        </tr>
+  </div>
+-->
 
-        <tr *ngFor="let user of users">
-			<ng-container *ngFor="let column of columns">
-                <ng-container *ngIf="column.type == 'button'; else string">
-				<td>
-                    <a routerLink="/edit/{{user.id}}" class='btn btn-info m-r-5px'>
-                        <span class='glyphicon glyphicon-edit'></span> Редактировать
-                    </a>
-                </td>
+<div class="container">
+    <div class="row" id="infinite-scroll-table" infiniteScroll [infiniteScrollDistance]="0.5" [infiniteScrollThrottle]="50" (scrolled)="onScroll()"
+         [scrollWindow]="false" style="height: 400px; overflow-y: scroll;">
+        <table class='table table-hover table-responsive table-bordered'>
+            <tr>
+                <th class="text-center" *ngFor="let column of columns">
+                    {{column.title}}
+                </th>
+            </tr>
+
+            <tr *ngFor="let user of users">
+                <ng-container *ngFor="let column of columns">
+                    <ng-container *ngIf="column.type == 'button'; else string">
+                        <td class="text-center">
+                            <!--<a routerLink="/edit/{{user.id}}" class='btn btn-info m-r-5px'>
+                                <span class='glyphicon glyphicon-edit'></span> Редактировать
+                            </a>-->
+                            <a routerLink="/edit/{{user.id}}" class="btn-edit"> </a>
+                        </td>
+                    </ng-container>
+
+                    <ng-template #string>
+                        <td>{{user[column.name]}}</td>
+                    </ng-template>
                 </ng-container>
-
-                <ng-template #string>
-                    <td>{{user[column.name]}}</td>
-                </ng-template>
-            </ng-container>
-        </tr>
-    </table>
+            </tr>
+        </table>
+    </div>
+</div>
