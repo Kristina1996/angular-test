@@ -1,0 +1,29 @@
+.form-control {
+    max-width: 500px;
+}
+
+.form-update-user {
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    margin-bottom: 60px;
+}
+
+#form-group {
+    margin-bottom: 40px;
+}
+
+#goBack {
+    margin-left: 400px;
+    margin-right: 10px;
+}
+
+#resetForm {
+    margin-right: 10px;
+}
+
+#save {
+
+}
