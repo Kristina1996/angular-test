@@ -20,7 +20,7 @@ export class EditUserComponent implements OnInit {
 	@Input() id;
 	
 	get buttonDisabled() {
-		if (this.update_user_form.value.age > 18 && this.update_user_form.value.name !== '' &&
+		if (this.update_user_form.value.age > 17 && this.update_user_form.value.name !== '' &&
             	this.update_user_form.value.surname !== '' && this.update_user_form.value.position !== '') {
 			if (this.newFunction() === false || (this.newFunction() && this.update_user_form.value.inn !== '')) {
                 return true;

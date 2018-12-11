@@ -22,10 +22,11 @@
 .modalwindow {
     width: 100%;
     max-width: 375px;
-    margin: 10% auto;
+    margin: 5% auto;
     padding: 2%;
     background: #fff;
     border-radius: 3px;
+    color: darkslategrey;
 }
 
 /* настройка заголовка */
@@ -59,12 +60,13 @@
 }
 
 ul {
-    width: 90%;
+    width: 100%;
     margin-bottom: 30px;
+    padding-left: 0;
 }
 
 li {
-	width: 90%;
+	width: 100%;
 	height: auto;
 	background-color: #fff;
 	padding: 7px 20px;

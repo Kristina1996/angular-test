@@ -5,6 +5,7 @@
 #infinite-scroll-table {
     height: 500px !important;
     margin-bottom: 50px;
+    color: darkslategrey;
 }
 
 .btn-edit {
@@ -16,4 +17,7 @@
     cursor: pointer;
 }
 
+.page-header {
+    color: darkslategrey;
+}
 

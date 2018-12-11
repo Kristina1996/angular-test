@@ -51,14 +51,18 @@ export class SettingsTableComponent implements OnInit {
 
     upColumn(column) {
 		var index = this.columns.indexOf(column);
-		var downIndex = index - 1;
-		this.changeRange(index, downIndex);
+		if (index > 0) {
+            var downIndex = index - 1;
+            this.changeRange(index, downIndex);
+        }
 	}
 
 	downColumn(column) {
 		var index = this.columns.indexOf(column);
-		var upIndex = index + 1;
-		this.changeRange(index, upIndex);
+		if (index < this.columns.length - 1) {
+            var upIndex = index + 1;
+            this.changeRange(index, upIndex);
+        }
 	}
 
 }

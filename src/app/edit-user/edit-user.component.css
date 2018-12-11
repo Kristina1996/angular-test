@@ -2,13 +2,23 @@
     max-width: 500px;
 }
 
+.page-header {
+    color: darkslategrey;
+}
+
+.form-group row {
+    align-items: center;
+}
+
 .form-update-user {
+    color: darkslategrey;
     align-items: center;
     justify-content: center;
     margin-left: auto;
     margin-right: auto;
     margin-top: 30px;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
+    width: 70%;
 }
 
 #form-group {
@@ -16,7 +26,6 @@
 }
 
 #goBack {
-    margin-left: 400px;
     margin-right: 10px;
 }
 
@@ -26,4 +35,19 @@
 
 #save {
 
+}
+
+#text-alert {
+    vertical-align: baseline;
+}
+
+.text-danger {
+    vertical-align: baseline;
+}
+
+.buttons {
+    margin-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 300px;
 }
