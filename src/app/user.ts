@@ -8,5 +8,5 @@ export class User {
         public position: string,
         public salary: string,
 		public inn: string
-    ){}
+    ) {}
 }

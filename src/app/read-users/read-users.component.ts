@@ -4,7 +4,6 @@ import { Observable} from 'rxjs';
 import { User } from '../user';
 import { Column } from '../column';
 import { Http, Response, Headers } from '@angular/http';
-import { ModalWindowComponent } from '../modal-window.component';
 import { SettingsTableComponent } from '../settings-table/settings-table.component';
 import { COLUMNS } from '../columns-data';
 
@@ -26,7 +25,7 @@ export class ReadUsersComponent implements OnInit {
 	page: number = 1;
  
     // Инициализация userService для получения списка пользователей
-    constructor( private userService: UserService ){}
+    constructor( private userService: UserService ) {}
  
     ngOnInit() {
         //this.getAllUsers();
@@ -36,7 +35,7 @@ export class ReadUsersComponent implements OnInit {
 	
 	onChanged(increased: any) {
 		console.log(increased);
-		if (increased == false) {
+		if (increased === false) {
 			this.getDataFromLocalStorage();
 			this.show = false;
 		}
@@ -70,11 +69,11 @@ export class ReadUsersComponent implements OnInit {
 				}
 				
 				if (this.page > 1) {
-					for (var i=0; i < users['records'].length; i++) {
+					for (var i = 0; i < users['records'].length; i++) {
 						var size = this.users.push(users['records'][i]);
 						console.log(size);
 					}
-					console.log(users); 
+					console.log(users);
 				}
 			});
 	}

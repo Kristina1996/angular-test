@@ -12,7 +12,7 @@ export class UserService {
 
 	constructor(private _http : Http) { }
 	
-    readUsers(): Observable<User[]>{
+    readUsers(): Observable<User[]> {
         return this._http
 			.get("http://api/dao/read.php")
             .pipe(map((res: Response) => res.json()));
