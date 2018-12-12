@@ -11,7 +11,6 @@
 	<form [formGroup]="update_user_form" (ngSubmit)="updateUser()" id="form-group">
 
 		<div class="form-group row">
-	
 			<label class="col-sm-2 col-form-label text-right"> Имя *</label>
 			<div class="col-sm-6">
 				<input formControlName="name"
@@ -76,7 +75,6 @@
 					ИНН имеется
 				</label>
 			</div>
-
 		</div>
 		
 		<div *ngIf="newFunction()">
@@ -94,10 +92,10 @@
 				</div>
 			</div>
 		</div>
+
 	</form>
-
-
 </div>
+
 <div class="buttons">
 	<button class="btn btn-primary" (click)="goBack()" id="goBack">Назад</button>
 	<button class="btn btn-secondary" (click)="resetForm()" id="resetForm">Сбросить</button>

@@ -1,14 +1,3 @@
-<!--<p>
-  settings-table works!
-</p>
-
-<ul>
-    <li *ngFor="let hero of heroes">
-      {{ hero }}
-    </li>
-  </ul>-->
-
-
 
 <div id="error" class="modalbackground">
     <div class="modalwindow">
@@ -19,16 +8,11 @@
         <ul>
             <li *ngFor="let column of columns">
                 {{ column.title }}
-
-                <!--<button (click)="upColumn(column)">Вверх</button>
-                <button (click)="downColumn(column)">Вниз</button>-->
-				
 				<a class="up" (click)="upColumn(column)"></a>
                 <a class="down" (click)="downColumn(column)"></a>
             </li>
         </ul>
 
-        <!--<a href=" " (click)="saveSettings()">Закрыть</a>-->
 		<a class="btn btn-primary" id="save" (click)="saveSettings()">Сохранить</a>
     </div>
 </div>

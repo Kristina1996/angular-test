@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 })
 export class UserService {
 
-	constructor(private _http : Http) { }
+	constructor(private _http: Http) { }
 	
     readUsers(): Observable<User[]> {
         return this._http

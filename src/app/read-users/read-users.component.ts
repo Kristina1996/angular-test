@@ -1,10 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, TemplateRef } from '@angular/core';
 import { UserService } from '../user.service';
-import { Observable} from 'rxjs';
 import { User } from '../user';
-import { Column } from '../column';
 import { Http, Response, Headers } from '@angular/http';
-import { SettingsTableComponent } from '../settings-table/settings-table.component';
 import { COLUMNS } from '../columns-data';
 
 @Component({
@@ -15,20 +12,16 @@ import { COLUMNS } from '../columns-data';
 })
 export class ReadUsersComponent implements OnInit {
 
-    show: boolean = false;
+    show = false;
 	title = 'Список пользователей';
     users: User[] = [];
-	
-	//columns: Column[];
 	columns = COLUMNS;
-	
-	page: number = 1;
+	page = 1;
  
     // Инициализация userService для получения списка пользователей
     constructor( private userService: UserService ) {}
  
     ngOnInit() {
-        //this.getAllUsers();
 		this.getDataFromLocalStorage();
 		this.getUserswithPage();
     }
@@ -42,11 +35,11 @@ export class ReadUsersComponent implements OnInit {
     }
 	
 	getDataFromLocalStorage() {
-		let localStorageColumns = JSON.parse(localStorage.getItem('columns'));
+		const localStorageColumns = JSON.parse(localStorage.getItem('columns'));
 		if (localStorageColumns == null) {
-			console.log("localStorage пустой");
-		} else { 
-			console.log("localStorage не пустой"); 
+			console.log('localStorage пустой');
+		} else {
+			console.log('localStorage не пустой');
 			this.columns = localStorageColumns.columns;
 		}
 	}
@@ -54,23 +47,22 @@ export class ReadUsersComponent implements OnInit {
 	getAllUsers() {
 		this.userService.readUsers()
             .subscribe(users => {
-				console.log(users); 
-				this.users = users['records']}
-            );
+				console.log(users);
+				this.users = users['records'];
+            });
 	}
 	
 	getUserswithPage() {
 		this.userService.getUserswithPage(this.page)
 			.subscribe(users => {
-				console.log(users); 
-				//this.users = users['records']
-				if (this.page == 1) {
+				console.log(users);
+				if (this.page === 1) {
 					this.users = users['records'];
 				}
 				
 				if (this.page > 1) {
-					for (var i = 0; i < users['records'].length; i++) {
-						var size = this.users.push(users['records'][i]);
+					for (let i = 0; i < users['records'].length; i++) {
+						const size = this.users.push(users['records'][i]);
 						console.log(size);
 					}
 					console.log(users);
@@ -79,7 +71,7 @@ export class ReadUsersComponent implements OnInit {
 	}
 	
 	onScroll() {
-		console.log("Scrolled");
+		console.log('Scrolled');
 		this.page = this.page + 1;
 		this.getUserswithPage();
 	}

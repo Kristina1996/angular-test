@@ -8,6 +8,4 @@ import { Component } from '@angular/core';
 export class AppComponent {
 	title = 'Read users';
 	user_id;
-	
-	show_read_users_html = true;
 }

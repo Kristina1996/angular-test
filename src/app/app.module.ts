@@ -10,15 +10,12 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SettingsTableComponent } from './settings-table/settings-table.component';
 
-// import { ModalWindowComponent } from './modal-window.component';
-
 @NgModule({
 	declarations: [
 		AppComponent,
 		ReadUsersComponent,
 		EditUserComponent,
 		SettingsTableComponent
-		// ModalWindowComponent
 	],
 	imports: [
 		BrowserModule,

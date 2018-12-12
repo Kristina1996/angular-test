@@ -41,12 +41,12 @@ export class EditUserComponent implements OnInit {
 		private formBuilder: FormBuilder
 	) {
 		this.update_user_form = this.formBuilder.group({
-            name: ["", Validators.required],
-            surname: ["", Validators.required],
-            age: ["", Validators.required],
-            position: ["", Validators.required],
-			check: [""],
-			inn: ["", Validators.required]
+            name: ['', Validators.required],
+            surname: ['', Validators.required],
+            age: ['', Validators.required],
+            position: ['', Validators.required],
+			check: [''],
+			inn: ['', Validators.required]
         });
 	}
 
@@ -75,9 +75,7 @@ export class EditUserComponent implements OnInit {
                     name: user.name,
                     surname: user.surname,
                     age: user.age,
-					//address: user.address,
                     position: user.position,
-					//salary: user.salary,
 					inn: user.inn
                 });
             });
@@ -95,5 +93,4 @@ export class EditUserComponent implements OnInit {
                  error => console.log(error)
              );
 	}
-
 }
