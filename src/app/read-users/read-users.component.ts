@@ -18,7 +18,9 @@ export class ReadUsersComponent implements OnInit {
 	columns = COLUMNS;
 	page = 1;
  
-    // Инициализация userService для получения списка пользователей
+    /**
+	 * Инициализация userService для получения списка пользователей
+	 */
     constructor( private userService: UserService ) {}
  
     ngOnInit() {
@@ -33,7 +35,10 @@ export class ReadUsersComponent implements OnInit {
 			this.show = false;
 		}
     }
-	
+
+    /**
+	 * Получение списка колонок из localStorage
+     */
 	getDataFromLocalStorage() {
 		const localStorageColumns = JSON.parse(localStorage.getItem('columns'));
 		if (localStorageColumns == null) {
@@ -43,7 +48,10 @@ export class ReadUsersComponent implements OnInit {
 			this.columns = localStorageColumns.columns;
 		}
 	}
-	
+
+    /**
+	 * Получение списка всех пользователей через userService
+     */
 	getAllUsers() {
 		this.userService.readUsers()
             .subscribe(users => {
@@ -51,7 +59,10 @@ export class ReadUsersComponent implements OnInit {
 				this.users = users['records'];
             });
 	}
-	
+
+    /**
+	 * Получение списка пользователей с учетом динамической подгрузки
+     */
 	getUserswithPage() {
 		this.userService.getUserswithPage(this.page)
 			.subscribe(users => {
@@ -69,7 +80,10 @@ export class ReadUsersComponent implements OnInit {
 				}
 			});
 	}
-	
+
+    /**
+	 * Метод для получения списка новых данных с бэка, срабатывающий при скролле компонента
+     */
 	onScroll() {
 		console.log('Scrolled');
 		this.page = this.page + 1;

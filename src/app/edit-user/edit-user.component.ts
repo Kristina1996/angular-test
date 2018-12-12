@@ -18,7 +18,10 @@ export class EditUserComponent implements OnInit {
 	
 	@Input() user: User;
 	@Input() id;
-	
+
+    /**
+	 * Метод для включения/выключения кнопки "Сохранить"
+     */
 	get buttonDisabled() {
 		if (this.update_user_form.value.age > 17 && this.update_user_form.value.name !== '' &&
             	this.update_user_form.value.surname !== '' && this.update_user_form.value.position !== '') {
@@ -27,7 +30,10 @@ export class EditUserComponent implements OnInit {
             }
 		}
 	}
-	
+
+    /**
+	 * Метод для отображения инпута "ИНН"
+     */
 	newFunction() {
 		if (this.update_user_form.value.check) {
 			return true;
@@ -55,16 +61,25 @@ export class EditUserComponent implements OnInit {
 		this.resetForm();
 	}
 
+    /**
+	 * Получение данных о выбранном пользователе с бэка
+     */
 	getUser(): void {
 		const id = +this.route.snapshot.paramMap.get('id');
 		this.userService.getUser(id)
 		.subscribe(user => this.user = user);
 	}
-	
+
+    /**
+	 * Вернуться обратно на страницу со списком пользователей
+     */
 	goBack(): void {
 		this.location.back();
 	}
-	
+
+    /**
+	 * Сброс формы до значений по умолчанию
+     */
 	resetForm(): void {
 		const id = +this.route.snapshot.paramMap.get('id');
 
@@ -80,7 +95,10 @@ export class EditUserComponent implements OnInit {
                 });
             });
 	}
-	
+
+    /**
+	 * Сохранить введенные значения через userService
+     */
 	save() {
 		const id = +this.route.snapshot.paramMap.get('id');
 		
